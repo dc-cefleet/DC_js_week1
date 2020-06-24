@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Accessing the DOM
+        </title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Rogue One : A star wars story was amazing.</h1>
+        <div class="content" id="mainContent">
+            <section>
+                <h2>It was so special</h2>
+                <p>No other story brings such great emotion, and post-human Carrie Fisher had my wife in tears.</p>
+                <p class="extra">The story between Cassian and Jyn was tragically perfect.</p>
+            </section>
+            <section>
+                <h2>It fill much needed plot holes</h2>
+                <p>Really, Galen hiding that defect in the Death Star was a stroke of genius.</p>
+                <p class="extra">It added a lot to the power of Tarkin and how he was able to give a command to Vader too!</p>
+            </section>
+            <section>
+                <h2>Get More Info</h2>
+                <form>
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" name="first-name" />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" />
+                    </div>
+                </form>
+            </section>
+        </div>
+        <script>
+            console.log(document.getElementsByTagName("p"))
+            console.log(document.getElementsByClassName("extra"))
+            console.log(document.getElementById("first-name"))
+
+            let item = document.getElementById("email")
+            console.log(item)
+
+            console.log(document.querySelector(".extra"))
+
+            let aHTMLCollection = document.getElementsByClassName("extra")
+            aExtraItem = aHTMLCollection[0]
+            // ^ grabbing the first item from the HTML Collection and \/ changing the background color
+            aExtraItem.style = "background:red;"
+
+            aExtraItem.setAttribute("style","border:4px solid black;")
+            // ^ this supplants the styles above and the red goes away
+            // changes the inline style
+
+            aExtraItem.innerHTML = "<h3>Changed the HTML content</h3>"
+            // ^ this changes what's in the DOM
+            // the console tells you what's currently in the DOM
+
+        </script>
+    </body>
+</html>

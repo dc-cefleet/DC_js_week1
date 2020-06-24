@@ -575,14 +575,40 @@ let characters = [
     // Create an array that includes the name and mass of all charectors who mass is greater than 50.
         // Make sure you check the type of the mass.
 
-    const bigMass = characters.map((char) => {
+    const bigMass = characters.map(char => {
         if(char.mass > 50){
             return `${char.name},${char.mass}`
+            // alt {name:char.name, mass:char.mass}
         }
-    })
-
+    }).filter(e=>e)
     console.log(bigMass)
 
+    //ALT const bigMass = characters.map(char => char.mass > 50 ? {name:char.name, mass:char.mass} : null).filter(e=>e)
+    // you actually usually use filter before map so you don't have to comb through as many items
+/*
+    // ALT FOREACH: 
+        let charsAndMass = []
+        characters.forEach(function(char){
+            if(parseInt(char.mass)>50){
+                charsAndMass.push({name:char.name, mass:char.mass})
+            }
+        })
+        console.log(charsAndMass)
+*/
+        
+/*
+    // ALT FILTER
+    let charsAndMass = characters.filter(char => {
+        if(parseInt(char.mass)>50){
+            return true
+            // ^ this will return the WHOLE ITEM (a big ol' object)
+            // with filter, when something is true it pushes the whole item into the new array (just like map creates a new array, filter creates a new array too)
+        }
+        return false
+    }).map(function(char){
+        return({name:char.name, mass:char.mass})
+    })
+*/
     // Create an array of objects of only the characters that have at  least one starship. The objects only need 'name' and 'hasStarship' as its keys.
     
     const charsWithStarships = characters.map((char)=>{
@@ -594,7 +620,16 @@ let characters = [
     })
 
     console.log(charsWithStarships)
-    
+/* ALT FILTER FIRST
+    const charsWithStarships = characters.filter(char=>{
+        if(char.starships.length > 0){
+            return true
+        }
+        return false
+    }).map(char=>char.name)
+
+    console.log(charsWithStarships)
+*/
     // create an array of names of only the charecters who have both a starship and a vehicle. 
 
     const charsWithStarshipsAndVehicles = characters.map((char)=>{
