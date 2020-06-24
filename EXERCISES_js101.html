@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+
+    <script>
+//  Write a function 3x that has two parameters and those parameters are used in a sentence that says "hello my name is NAME I am AGE years old", except NAME and AGE would be the parameters given.
+            // Use the 3 ways of declaring a function to make each function different but the results to console the same.
+            // For each function use a different way of creating the output sentence. For example only one can use concatanation.
+
+
+        // first way to write a function
+        function threeX(name,age) {
+            console.log(`hello my name is ${name}. I am ${age} years old.`)
+        }
+
+        threeX("Dylan",29)
+
+        // second way to write a function
+        let threeX2 = (name,age) => `hello my name is ${name}. I am ${age} years old.`
+
+        console.log(threeX2("dylan",29))
+
+        // third way to write a function
+        let threeX3 = (name,age) => console.log(`hello my name is ${name}. I am ${age} years old.`)
+        threeX3("Dylan", 29)
+
+// Write a function that has another function as a parameter, and inside the main function the parameter function is called after you print to the console "Main Function Executing".
+            // You can declare the function as a varaible before and place that variable as the parameter.
+            // (Challange) have the main function have a second parameter that will be used as an argument for the child function.
+
+        let doAfter = param1 => console.log("Look I was called")
+
+        function mainFunction(callback) {
+            //do a lot of stuff
+            console.log("Main Function Executing")
+        }
+
+        mainFunction(doAfter)
+
+        // ^ this calls mainFunction (so we see "Main Function Executing")
+        // first, then it calls the "Look I was called second" once the
+        // main one is done
+
+        function mainFunction2(callback, secondParam) {
+            //do a lot of stuff
+            console.log("Main Function Executing")
+            callback(secondParam)
+        }
+        
+        mainFunction2(myParam => console.log(`my parent gave me ${myParam}`), "a gift and a curse")
+        // where myParam is put in as the parameter "secondParam", and myParam
+        // is then defined as "a gift and a curse" so the full return of this
+        // is "Main Funciton Executing" then "my parent gave me a gift and a curse"
+
+// Write a function that will print to the console "Parent Function Called" and then returns a function that when is called will print to the console "Child Function Called" The child function cannot be declared outside of the main function. Follow steps bellow if you need a step by step way to do it.
+            // Create a function and have that function print to the console.
+            // Inside the main function declare the second function as a variable that prints to the console the given statement
+            // after the second function is declared inside the main function, return the variable that the second function is assigned to.
+            // Outside of the function assign the called function to a variable (that variable is now a function).
+            // call that variable.
+
+        let aFunc = function() {
+            console.log("Parent Function Called")
+            return () => console.log("Child Function Called")
+        }
+
+        aFunc()
+        // ^ this logs out "Parent Function called"
+
+        let aFuncCalled = aFunc()
+        aFuncCalled()
+        // ^ this returns "Child Function Called"
+
+//         Write a function that accepts string as an argument and if the string is less than 4 charecters return one message, if it is greater than 12 return another message otherwise return a final message about being accepted.
+
+// Write a function that accepts an argument named temperature. Have at least 6 ranges of tempature that represents a html valid color. Return the color based on the argument supplied when calling the function.
+    // Use Switch. (hint do a google search for 'switch(true)' )
+    let therm = (temp) => {
+        console.log(`the temperature is ${temp}`)
+        let output
+        switch(true){
+            //instead of 
+            case temp <= 0:
+                output = "black"
+                
+            case temp > 0 && temp <= 32:
+                output = "white"
+
+            case temp > 32 && temp <= 50:
+                output = "blue"
+            
+            case temp > 50 && temp <= 70:
+                output = "green"
+
+            case temp > 70 && temp <= 90:
+                output = "yellow"
+
+            case temp > 90:
+                output = "red"
+        }
+        return output
+    }
+    
+    console.log(therm(0))
+
+// Write a function that will return an array of arrays with 100 copies of each element in the array supplied in the as an argument of the function. 
+    // The array in the parameter needs to be strings and needs to have at least 5 elements.
+    // (ridiculous unessery challenge..seriously dont try this unless you are just wanting a challange) complete the above with the following requirements (it can be more than one function for this):
+    // Without mutating anything (strings, arrays etc). This means no variable can change and no array can be added to or removed from. (look up imutability)
+    // Without Using any loops
+    // Without using forEach, map, filter, or reduce.
+    // (seriously please do not spend more than 30 minutes trying to do this)
+
+    numList = [1,2,3,4,5]
+
+    let google = (input) => {
+        const arrayOfArrays = []
+        
+        for (i = 0; i < input.length; i++) {
+            arrayOfArrays[i] = []
+
+            for(j = 0; j < 100; j++) {
+                arrayOfArrays[i].push(input[i])
+                //ALT w/o push: arrayOfArrays[i][j] = input[i]
+            }
+        }
+
+
+        
+        return arrayOfArrays
+    }
+
+    console.log(google(numList))
+
+
+//     Madlib
+// Write a madlib function, which is given a name and a subject. It will return(not print) a new string: (name)'s favorite subject in school is (subject).
+
+    function madlib(name,subject) {
+        return `${name}'s favorite subject is ${subject}`
+    }
+
+    console.log(madlib("Dylan","Art"))
+
+    // Print Numbers
+// Write a function printNumbers which is given a start number and an end number. It will print the numbers from one to the other, one per line:
+
+    let printNums = () => {
+        for (i = 1; i < 11; i++) {
+            console.log(i)
+        }
+    }
+
+    printNums()
+
+//     Print a Square
+// Write a function printSquare which is given a size and prints a square of that size using asterisks.
+
+    let printSquare = (size) => {
+        let str1 = ""
+        let ast = "*"
+        let str2 = ""
+        for (i = 0; i < size; i++) {
+            str2 = str1.concat(ast)
+            str1 = str2
+        }
+        for (i = 0; i < size; i++) {
+            console.log(str2)
+        } 
+    }
+
+    printSquare(10)
+
+//     Print a box
+// Write function printBox which is given a width and height and prints a hollow box of those given dimensions.
+    let printBox = (width,height) => {
+        let str1 = ""
+        let ast = "-"
+
+        for (i = 0; i < width; i++) {
+            str1 = str1.concat(ast)
+        }
+        console.log(str1)
+
+        inbetween = ""
+        space = " "
+        for (i = 0; i < width - 2; i++) {
+            inbetween = inbetween.concat(space)
+        }
+
+        for (i = 0; i < height-2; i++) {
+            console.log("|",inbetween,"|")
+        }
+        console.log(str1)
+    }
+
+    printBox(10,20)
+
+//     Print a Banner
+// Write a function printBanner which is given some text and prints a banner with a border surrounding the text. The border has to stretch to the length of the text.
+
+    let banner = (string) => {
+        let str1 = ""
+        let ast = "-"
+
+        for (i = 0; i < string.length+4; i++) {
+            str1 = str1.concat(ast)
+        }
+        console.log(str1)
+        console.log("-",string,"-")
+        console.log(str1)
+    }
+
+    banner("Oh hell yeah")
+
+//     Leetspeak
+// Write a function leetspeak which is given a string, and returns the leetspeak equivalent of the string. To convert text to its leetspeak version, make the following substitutions:
+
+// A => 4 E => 3 G => 6 I => 1 O => 0 S => 5 T => 7
+    let leet = (msg) => {
+        for (i in msg.length) {
+            switch(i) {
+                case 'a':
+                    i = '4'
+            }
+        }
+        console.log(msg)
+    }
+    
+    leet("Aaaay")
+
+    //NOTES ON .MAP
+    let listOfObjs = [
+        {
+            name:"obi wan",
+            side:"light"
+        },
+        {
+            name:"luke",
+            side:"light"
+        },
+        {
+            name:"darth vader",
+            side:"dark"
+        }
+    ]
+        // similar to forEach, the first arg is the value and the second is the index
+    const names = listOfObjs.map((val,idx)=>`${idx}. ${val.name}`)
+        // you do the .map ^ method and place the function in the parentheses
+    console.log(names)
+
+//     Write a function that will recieve a sentance as a string and return another string of only the letters that MATCH the requirement of being upper case JOINed together.
+    // Hint you will be using a string method and an array method.
+
+let upper = (string) => {
+    let uppersonly = []
+    let allLetters = string.split("")
+    console.log(allLetters)
+    for (i in allLetters) {
+        if (allLetters[i] === allLetters[i].toUpperCase()){
+            uppersonly.push(allLetters[i])
+        }
+    }
+    console.log(uppersonly.join(""))
+}
+// could've used .match() method to cover all of that ^
+
+upper("Why isn't iT Fall yet?")
+
+// Write a function that will return the KEYS of an object as an array and have the array SORTed in alphebetical order.
+
+const myObject = {
+    "d":1,
+    "a":2,
+    "z":3,
+    "f":4
+}
+
+let sortingKeys = (myObj) => {
+    return Object.keys(myObj)
+}
+
+const sortedKeys = sortingKeys(myObject).sort()
+
+console.log(sortedKeys)
+
+// Write a function that will accept an Array of numbers as a parameter and return the first number that it FINDs that is greater than a second parameter.
+    // Hint I told you that you would see this on MDN.
+
+
+
+// Write a function that accepts 2 objects and returns a new object that is made up of the two objects.
+    // The resulting object must not modify either of the two objects in the parameters.
+
+
+//     Create a function that accepts an array as an argument and for every item in the array return a new array of objects where each object has two keys. Item and index. 
+// The value should be the element from the array and the index respectivly. 
+
+    plantsInGarden = ["tomato","raspberry","apple","strawberry","zucchini","carrot"]
+
+    let myFunc = (myArray) => {
+            const newArray = myArray.map((item,index) => {
+                return {index, item}
+            })
+        console.log(newArray)
+    }
+
+    myFunc(plantsInGarden)
+
+// Use the array of object provided in the file "swapi.js" for the next several items.
+
+let characters = [
+    {
+        "name": "Luke Skywalker", 
+        "height": "172", 
+        "mass": "77", 
+        "hair_color": "blond", 
+        "skin_color": "fair", 
+        "eye_color": "blue", 
+        "birth_year": "19BBY", 
+        "gender": "male", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [
+            "http://swapi.dev/api/vehicles/14/", 
+            "http://swapi.dev/api/vehicles/30/"
+        ], 
+        "starships": [
+            "http://swapi.dev/api/starships/12/", 
+            "http://swapi.dev/api/starships/22/"
+        ], 
+        "created": "2014-12-09T13:50:51.644000Z", 
+        "edited": "2014-12-20T21:17:56.891000Z", 
+        "url": "http://swapi.dev/api/people/1/"
+    }, 
+    {
+        "name": "C-3PO", 
+        "height": "167", 
+        "mass": "75", 
+        "hair_color": "n/a", 
+        "skin_color": "gold", 
+        "eye_color": "yellow", 
+        "birth_year": "112BBY", 
+        "gender": "n/a", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/4/", 
+            "http://swapi.dev/api/films/5/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [
+            "http://swapi.dev/api/species/2/"
+        ], 
+        "vehicles": [], 
+        "starships": [], 
+        "created": "2014-12-10T15:10:51.357000Z", 
+        "edited": "2014-12-20T21:17:50.309000Z", 
+        "url": "http://swapi.dev/api/people/2/"
+    }, 
+    {
+        "name": "R2-D2", 
+        "height": "96", 
+        "mass": "32", 
+        "hair_color": "n/a", 
+        "skin_color": "white, blue", 
+        "eye_color": "red", 
+        "birth_year": "33BBY", 
+        "gender": "n/a", 
+        "homeworld": "http://swapi.dev/api/planets/8/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/4/", 
+            "http://swapi.dev/api/films/5/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [
+            "http://swapi.dev/api/species/2/"
+        ], 
+        "vehicles": [], 
+        "starships": [], 
+        "created": "2014-12-10T15:11:50.376000Z", 
+        "edited": "2014-12-20T21:17:50.311000Z", 
+        "url": "http://swapi.dev/api/people/3/"
+    }, 
+    {
+        "name": "Darth Vader", 
+        "height": "202", 
+        "mass": "136", 
+        "hair_color": "none", 
+        "skin_color": "white", 
+        "eye_color": "yellow", 
+        "birth_year": "41.9BBY", 
+        "gender": "male", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [], 
+        "starships": [
+            "http://swapi.dev/api/starships/13/"
+        ], 
+        "created": "2014-12-10T15:18:20.704000Z", 
+        "edited": "2014-12-20T21:17:50.313000Z", 
+        "url": "http://swapi.dev/api/people/4/"
+    }, 
+    {
+        "name": "Leia Organa", 
+        "height": "150", 
+        "mass": "49", 
+        "hair_color": "brown", 
+        "skin_color": "light", 
+        "eye_color": "brown", 
+        "birth_year": "19BBY", 
+        "gender": "female", 
+        "homeworld": "http://swapi.dev/api/planets/2/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [
+            "http://swapi.dev/api/vehicles/30/"
+        ], 
+        "starships": [], 
+        "created": "2014-12-10T15:20:09.791000Z", 
+        "edited": "2014-12-20T21:17:50.315000Z", 
+        "url": "http://swapi.dev/api/people/5/"
+    }, 
+    {
+        "name": "Owen Lars", 
+        "height": "178", 
+        "mass": "120", 
+        "hair_color": "brown, grey", 
+        "skin_color": "light", 
+        "eye_color": "blue", 
+        "birth_year": "52BBY", 
+        "gender": "male", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/5/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [], 
+        "starships": [], 
+        "created": "2014-12-10T15:52:14.024000Z", 
+        "edited": "2014-12-20T21:17:50.317000Z", 
+        "url": "http://swapi.dev/api/people/6/"
+    }, 
+    {
+        "name": "Beru Whitesun lars", 
+        "height": "165", 
+        "mass": "75", 
+        "hair_color": "brown", 
+        "skin_color": "light", 
+        "eye_color": "blue", 
+        "birth_year": "47BBY", 
+        "gender": "female", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/5/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [], 
+        "starships": [], 
+        "created": "2014-12-10T15:53:41.121000Z", 
+        "edited": "2014-12-20T21:17:50.319000Z", 
+        "url": "http://swapi.dev/api/people/7/"
+    }, 
+    {
+        "name": "R5-D4", 
+        "height": "97", 
+        "mass": "32", 
+        "hair_color": "n/a", 
+        "skin_color": "white, red", 
+        "eye_color": "red", 
+        "birth_year": "unknown", 
+        "gender": "n/a", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/"
+        ], 
+        "species": [
+            "http://swapi.dev/api/species/2/"
+        ], 
+        "vehicles": [], 
+        "starships": [], 
+        "created": "2014-12-10T15:57:50.959000Z", 
+        "edited": "2014-12-20T21:17:50.321000Z", 
+        "url": "http://swapi.dev/api/people/8/"
+    }, 
+    {
+        "name": "Biggs Darklighter", 
+        "height": "183", 
+        "mass": "84", 
+        "hair_color": "black", 
+        "skin_color": "light", 
+        "eye_color": "brown", 
+        "birth_year": "24BBY", 
+        "gender": "male", 
+        "homeworld": "http://swapi.dev/api/planets/1/", 
+        "films": [
+            "http://swapi.dev/api/films/1/"
+        ], 
+        "species": [], 
+        "vehicles": [], 
+        "starships": [
+            "http://swapi.dev/api/starships/12/"
+        ], 
+        "created": "2014-12-10T15:59:50.509000Z", 
+        "edited": "2014-12-20T21:17:50.323000Z", 
+        "url": "http://swapi.dev/api/people/9/"
+    }, 
+    {
+        "name": "Obi-Wan Kenobi", 
+        "height": "182", 
+        "mass": "77", 
+        "hair_color": "auburn, white", 
+        "skin_color": "fair", 
+        "eye_color": "blue-gray", 
+        "birth_year": "57BBY", 
+        "gender": "male", 
+        "homeworld": "http://swapi.dev/api/planets/20/", 
+        "films": [
+            "http://swapi.dev/api/films/1/", 
+            "http://swapi.dev/api/films/2/", 
+            "http://swapi.dev/api/films/3/", 
+            "http://swapi.dev/api/films/4/", 
+            "http://swapi.dev/api/films/5/", 
+            "http://swapi.dev/api/films/6/"
+        ], 
+        "species": [], 
+        "vehicles": [
+            "http://swapi.dev/api/vehicles/38/"
+        ], 
+        "starships": [
+            "http://swapi.dev/api/starships/48/", 
+            "http://swapi.dev/api/starships/59/", 
+            "http://swapi.dev/api/starships/64/", 
+            "http://swapi.dev/api/starships/65/", 
+            "http://swapi.dev/api/starships/74/"
+        ], 
+        "created": "2014-12-10T16:16:29.192000Z", 
+        "edited": "2014-12-20T21:17:50.325000Z", 
+        "url": "http://swapi.dev/api/people/10/"
+    }
+]
+
+    // Create an array of only the names.
+
+    const namesOnly = characters.map((char) => {
+        return char.name
+    })
+
+    console.log(namesOnly)
+
+    // Create an array that includes the name and mass of all charectors who mass is greater than 50.
+        // Make sure you check the type of the mass.
+
+    const bigMass = characters.map((char) => {
+        if(char.mass > 50){
+            return `${char.name},${char.mass}`
+        }
+    })
+
+    console.log(bigMass)
+
+    // Create an array of objects of only the characters that have at  least one starship. The objects only need 'name' and 'hasStarship' as its keys.
+    
+    const charsWithStarships = characters.map((char)=>{
+        if(char.starships.length > 0){
+            const hasStarship = true
+            const name = char.name
+            return {name,hasStarship}
+        }
+    })
+
+    console.log(charsWithStarships)
+    
+    // create an array of names of only the charecters who have both a starship and a vehicle. 
+
+    const charsWithStarshipsAndVehicles = characters.map((char)=>{
+        if(char.starships.length > 0 && char.vehicles.length > 0){
+            const hasStarship = true
+            const hasVehicle = true
+            const name = char.name
+            return {name,hasStarship,hasVehicle}
+        }
+    })
+
+    console.log(charsWithStarshipsAndVehicles)
+
+    </script>
+    <body>
+        <div id="div1"></div>
+    </body>
+</html>
