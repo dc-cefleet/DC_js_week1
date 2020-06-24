@@ -56,6 +56,30 @@
             // ^ this changes what's in the DOM
             // the console tells you what's currently in the DOM
 
+    //ADDING ELEMENTS
+    const createCard = (title,content,extra) => {
+        let newh2 = document.createElement("h2")
+        newh2.innerText = title
+
+        let newP = document.createElement("p")
+        newP.innerText = content
+
+        let newP2 = document.createElement("p")
+        newP2.innerText = extra
+
+        let newSection = document.createElement("section")
+        // ^ now we have to put it somewhere
+        
+        newSection.append(newh2, newP, newP2)
+
+        newP2.className = "extra"
+
+        let docBody = document.getElementById('mainContent')
+        docBody.append(newSection)
+    }
+
+    createCard("Another header!","More insight into the movie lol","extra text down here")
+    createCard("Yet another header!","EVEN more insight into the movie lol","extra text down here")
         </script>
     </body>
 </html>

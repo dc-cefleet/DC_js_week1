@@ -1,0 +1,174 @@
+<html>
+  <head>
+      <style>
+          /* LARGE EXERCISE */
+          div {
+            margin:-10px;
+          }
+
+          .navbar {
+              background-color: #ddd;
+              display:flex;
+              justify-content:flex-start;
+              align-items: center;
+              padding:20px;
+          }
+
+          .navbar h2 {
+              margin:20px;
+              font-family: 'Courier New', Courier, monospace;
+          }
+
+          .about-me {
+              background-color: #eee;
+              display:flex;
+              justify-content:flex-start;
+              align-items: center;
+              padding:20px;
+          }
+
+          .about-me img {
+              width:300px;
+              border-radius: 50%;
+              margin:40px;
+          }
+
+          .about-me-text-container {
+            font-family: 'Courier New', Courier, monospace;
+          }
+
+          /* MEDIUM */
+          /* .header {
+              background-color: #66f;
+              color:white;
+              display:flex;
+              justify-content:flex-start;
+              align-items: center;
+              padding:20px;
+          }
+
+          .header {
+              
+          } */
+
+      </style>
+  </head>
+  <body>
+    <div id="root"></div>
+<!-- LARGE EXERCISES -->
+    <script>
+    //NAVBAR
+        let navbar = document.createElement("div")
+        navbar.className = "navbar"
+        
+        let home = document.createElement("h2")
+        home.innerText = "Home"
+
+        let about = document.createElement("h2")
+        about.innerText = "About"
+
+        let contact = document.createElement("h2")
+        contact.innerText = "Contact"
+
+        navbar.append(home, about, contact)
+
+        root.append(navbar)
+    //MAIN
+        let aboutMe = document.createElement("div")
+        aboutMe.className = "about-me"
+        let profilePic = document.createElement("img")
+        profilePic.src = "cat_roomba.gif"
+
+        let aboutMeTextContainer = document.createElement("div")
+        aboutMeTextContainer.className = "about-me-text-container"
+
+        let myName = document.createElement("h3")
+        myName.innerText = "Whiskers Stone-Miller"
+
+        let myDesc = document.createElement("p")
+        myDesc.innerText = "I'm just a cat trying to get to the other side of the room."
+
+        let createListItem = text => {
+            let item = document.createElement("li")
+            item.innerText = text
+            myLikes.append(item)
+        }
+
+        let likesHeader = document.createElement("h3")
+        likesHeader.innerText = "Likes"
+        let myLikes = document.createElement("ul")
+        createListItem("Catchin' Zs")
+        createListItem("hoomans")
+        createListItem("Immanuel Kant")
+
+        let createListItem2 = text => {
+            let item = document.createElement("li")
+            item.innerText = text
+            myDislikes.append(item)
+        }
+        
+        let dislikesHeader = document.createElement("h3")
+        dislikesHeader.innerText = "Dislikes"
+        let myDislikes = document.createElement("ul")
+        createListItem2("Furniture")
+        createListItem2("hoomans")
+        createListItem2("Karen")
+
+        aboutMeTextContainer.append(myName, myDesc, likesHeader, myLikes, dislikesHeader, myDislikes)
+
+        aboutMe.append(profilePic,aboutMeTextContainer)
+        
+        root.append(aboutMe)
+
+
+    </script>
+
+<!-- MEDIUM EXERCISES -->
+    <!-- <div id="container"></div>
+
+    <script>
+        let container = document.getElementById("container")
+
+        let header = document.createElement("div")
+        header.className = "header"
+        let mainHeading = document.createElement("h1")
+        mainHeading.innerText = "HighOnCoding"
+        let home = document.createElement("h2")
+        home.innerText = "Home"
+        let categories = document.createElement("h2")
+        categories.innerText = "Categories"
+
+        header.append(mainHeading, home, categories)
+
+        container.append(header)
+
+
+  </script> -->
+  </body>
+</html>
+
+
+<!-- SMALL EXERCISES -->
+<!-- <main>
+
+    <section class="smallExercises">
+        <h1 id="heading"></h1>
+        <ul id="list">
+        <li id="lettuce" class="green list-item">Lettuce</li>
+        <li id="tomato" class="red list-item">Tomato</li>
+        <li id="cheese" class="yellow list-item">Cheese</li>
+        <li id="burger">Burger</li>
+        </ul>
+        <script>
+            let toppings = document.createElement("h2")
+            toppings.innerText = "Toppings"
+
+            let burger = document.getElementById("burger")
+            burger.className = "list-item"
+
+            let newItem = document.createElement("li")
+            document.getElementById("list").append(newItem)
+        </script>
+    </section>
+</main> -->
+
